@@ -1,3 +1,6 @@
+"""
+programa principal donde se corre la aplicacion
+"""
 from sqlite3 import IntegrityError, OperationalError
 from datetime import datetime
 from random import randint
