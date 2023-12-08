@@ -1,7 +1,3 @@
-"""
-programa principal donde se corre la aplicacion
-donde se cartag las ditintass clasese
-"""
 from sqlite3 import IntegrityError, OperationalError
 from datetime import datetime
 from random import randint
@@ -161,10 +157,6 @@ class Controlador():
             for i in self.modelo.cursor.fetchall():
                 lista_ids.append(i[0])
             self.modelo.con.commit()
-
-            # seguir con la funcion tomar las primeras letras de catergoria y nombre
-            # pegar con un numero random o secuencial y consultar si estas en lista_ids
-            # si no bien y si si probar con otro
 
             a = self.vista.valor_categoria.get()[0].upper()
             b = self.vista.valor_nombre.get()[0].upper()
