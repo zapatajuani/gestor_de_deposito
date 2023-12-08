@@ -1,5 +1,6 @@
 """
 programa principal donde se corre la aplicacion
+donde se cartag las ditintass clasese
 """
 from sqlite3 import IntegrityError, OperationalError
 from datetime import datetime
