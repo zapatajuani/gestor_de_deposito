@@ -20,7 +20,7 @@ Antes de ejecutar la aplicación, es necesario instalar las dependencias requeri
 
 # Ejecución
 
-Una vez instaladas las dependencias, el programa puede ser ejecutado a través de los archivos *controlador.py* o *__main__.py*. Para hacerlo, simplemente ejecute uno de los siguientes comandos:
+Una vez instaladas las dependencias, el programa puede ser ejecutado a través de dos archivos. Para hacerlo, simplemente ejecute uno de los siguientes comandos:
 
 `python controlador.py`
 
@@ -28,4 +28,4 @@ o
 
 `python __main__.py`
 
-Por favor, consulte la documentación completa para obtener más detalles sobre la ejecución y el uso de la aplicación ‘Gestor de Depósito.
+Por favor, consulte la [documentación](www.google.com) completa para obtener más detalles sobre la ejecución y el uso de la aplicación 'Gestor de Depósito'.
