@@ -1,3 +1,7 @@
+"""
+Modulo principal que se encarga de gestionar el programa, desde aqui se invocan las
+otras clases (Modeloy Vista), y se realiza toda la logica de la aplicacion.
+"""
 from sqlite3 import IntegrityError, OperationalError
 from datetime import datetime
 from random import randint
@@ -11,7 +15,17 @@ database = "src\datos\main.db"
 tabla = "DEPOSITO"
 
 class Controlador():
+    """
+    La clase Controlador va a ser la que se encargue, con sus
+    instancia, de llevar este control de la aplicacion. Desde su constructor va a
+    utilizar a las otras dos clases (Vista y Modelo), y mediante sus instancias generara
+    la logica para poder operar la aplicaion.
+    """
     def __init__(self):
+        """
+        Como se dijo anteriormenete, desde el constructor se invocaran a las otras dos clases
+        y se inicializarade forma correcta la aplicacion.
+        """
         self.modelo = Modelo(database, tabla)
         self.vista = App(self)
         self.limpiar()
@@ -20,6 +34,10 @@ class Controlador():
     def alta(
             self
     ):
+        """
+        Se da de alta los datos que proporciona el ususario hacia
+        la base de datos.
+        """
         try:
             if fullmatch(r"[A-Z]{2}-\d{6}", self.vista.valor_item_id.get()):
                 fecha_hoy = datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
@@ -43,6 +61,9 @@ class Controlador():
     def baja(
             self
     ):
+        """
+        Se dan de baja los datos que el usuario seleccione de la base de datos.
+        """
         try:
             iid = self.vista.tabla_principal.item(self.vista.tabla_principal.focus())["text"]
             self.modelo.delete_row(iid)
@@ -53,6 +74,10 @@ class Controlador():
     def refresh_table(
             self
     ):
+        """
+        Se actualiza la tabla. Es una instancia interna para poder visualizar los
+        cambios cadavez que se realizan.
+        """
         self.vista.tabla_principal.delete(*self.vista.tabla_principal.get_children())
 
         datos = self.modelo.leer_tabla()
@@ -72,6 +97,9 @@ class Controlador():
     def actualizar(
             self
     ):
+        """
+        Se actualizan los datos en la base de datos que el usuario haya modificado.
+        """
         if self.vista.estado_consulta.get():
             iid = self.vista.tabla_principal.item(self.vista.tabla_principal.focus())["text"]
 
@@ -95,6 +123,9 @@ class Controlador():
     def limpiar(
             self
     ):
+        """
+        Pone todos los valores de los campos de toma de datos en un valor de *default*.
+        """
         self.vista.valor_item_id.set("")
         self.vista.valor_nombre.set("")
         self.vista.valor_precio.set(0)
@@ -105,6 +136,9 @@ class Controlador():
     def consulta(
             self
     ):
+        """
+        Setea los valores de los campos de entrada segun el valor de la tabla seleccionado.
+        """
         try:
             iid = self.vista.tabla_principal.item(self.vista.tabla_principal.focus())["text"]
             datos = self.modelo.leer_fila(iid)
@@ -122,6 +156,10 @@ class Controlador():
     def buscar(
             self
     ):
+        """
+        Actualiza la tabla segun los valores que coincidan con los ingresados en los
+        campos de entrada.
+        """
         datos = (
             self.vista.valor_item_id.get(),
             self.vista.valor_nombre.get(),
@@ -150,6 +188,10 @@ class Controlador():
     def genid(
             self
     ):
+        """
+        Proporciona un valor de *Item-ID* con un valor aleatoreo teniendo en cuenta el
+        resto de valores ingresado por el usuario. 
+        """
         try:
             self.modelo.cursor.execute(f"SELECT itemid FROM {tabla}")
 
@@ -174,6 +216,18 @@ class Controlador():
     def exportar(
             self
     ):
+        """
+        Exporta la tabla principal a un formato *.xlsx*
+        hacia alguna de las siguientes ubicaicones:
+
+          * **Documentos**
+          
+          * **Escritorio**
+
+          * **Ubicacion del programa**
+
+        Este es el orden que intentara de manera predeterminada.
+        """
         wb = Workbook()
         ws = wb.active
         ws.title = f"{self.modelo.tabla}"

@@ -1,10 +1,37 @@
+"""
+El modulo Vista es el encargado de armar la ventana interactiva e
+interactuar con el usuario para poder brindar al controlador los comandos
+que este quiere realizar
+"""
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox as mb
 from widgets import Ventana, Boton, Texto, Entrada, Combobox, Tabla
 
 class App(Tk):
+    """
+    La clase Vista se contruye heredando de la libreria
+    `Tkinter <https://docs.python.org/es/3/library/tkinter.html>`_
+    el moudlo `Tk <https://docs.python.org/es/3/library/tk.html>`_.
+    El controlador llama a la clase Vista y cuando se crea el objeto de
+    la clase Controlador se genera el mainloop de la aplicacion.
+    """
     def __init__(self, controlador):
+        """
+        En el constructor de la clase se pide como parametro la clase Controlador,
+        para poder linkear las instancias de la clase Controlador, con las acciones de los
+        botones de la aplicacion.
+
+        Como primer paso se utiliza la intancia *super()* para invocar al constructor de
+        la clase `Tk <https://docs.python.org/es/3/library/tk.html>`_.
+
+        Luego se configura el estilo y atributos de la ventana principal, se definen las
+        variables de la aplicacion y se invoca al metodo  *_insertar_widgets()*, que se
+        encarga de incertar todos los widgets en la ventana.
+
+        Args:
+            controlador (clase): Clase Controlador que se cruza con la de Vista para poder utilizar las instancias de Controlador
+        """
         super().__init__()
         self.controlador = controlador
 
@@ -41,6 +68,11 @@ class App(Tk):
     def _insertar_widgets(
             self
     ):
+        """
+        Instancia interna que se encarga del diseño y colocacion de los widgets en la
+        ventana. 
+        """
+
         # ventana(master, col.num, row.num, columspan, rowspan, texto_de_cuadro)
         self.ventana_datos = Ventana(self, 0, 0, 1, 1, "Datos")
         self.ventana_botones = Ventana(self, 1, 0, 1, 1, "Acciones")
@@ -85,6 +117,14 @@ class App(Tk):
     def error(
             self, codigo
     ):
+        """
+        En este metodo el controlador envia un codigo de error predeterminado y segun cual sea el
+        codigo se displaya un mensaje de error puntual para cada caso.
+
+        Args:
+            codigo (str): Codigo predefinido en el controlador que se envia en el caso de que ocurra algun errot en la aplicacion.
+        """
+
         mensajes = {
             "ERROR.ACTUALIZAR": ["Error de Actualizar", "Realice previamente una consulta de algun dato"],
             "ERROR.GENID": ["Error en Generar ID", "Completar los campos para generar un id automaticamente"],
@@ -101,6 +141,13 @@ class App(Tk):
     def aviso_exportacion(
             self, codigo
     ):
+        """
+        Metodo que displaya un mensaje hacia donde se exporto la tabla.
+
+        Args:
+            codigo (int): Codigo predefinido en el controlador que se envia para informar donde se realizo la exportacion de la tabla.
+        """
+        
         mensajes = {
             0: "Se exporto con exito la tabla hacia la carpeta Documentos",
             1: "Se exporto con exito la tabal hacia el Escritorio",
