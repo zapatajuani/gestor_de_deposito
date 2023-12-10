@@ -39,7 +39,7 @@ class App(Tk):
         self.style.theme_use("clam")
         self.configure(background="#DCDAD5")
         self.resizable(False, False)
-        self.title("Administracion de Deposito")
+        self.title("Gestor de Deposito")
         self.iconbitmap(r"src\img\icono.ico")
 
         self.valor_item_id = StringVar()
