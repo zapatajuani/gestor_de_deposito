@@ -212,8 +212,8 @@ class Modelo():
 
         return datos
 
-def main():
+def _main():
     pass
 
 if __name__ == "__main__":
-    main()
+    _main()

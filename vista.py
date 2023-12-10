@@ -156,8 +156,8 @@ class App(Tk):
 
         mb.showinfo("Exportacion de tabla", mensajes[codigo])
 
-def main():
+def _main():
     pass
 
 if __name__ == "__main__":
-    main()
+    _main()
