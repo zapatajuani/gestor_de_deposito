@@ -28,4 +28,4 @@ o
 
 `python __main__.py`
 
-Por favor, consulte la [documentación](www.google.com) completa para obtener más detalles sobre la ejecución y el uso de la aplicación 'Gestor de Depósito'.
+Por favor, consulte la [documentación](https://zapatajuani.github.io/gestor_de_deposito_docs/) completa para obtener más detalles sobre la ejecución y el uso de la aplicación 'Gestor de Depósito'.
