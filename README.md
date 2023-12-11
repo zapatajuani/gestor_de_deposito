@@ -22,7 +22,7 @@ Antes de ejecutar la aplicación, es necesario instalar las dependencias requeri
 
 Una vez instaladas las dependencias, el programa puede ser ejecutado a través de dos métodos.
 
-Para hacerlo de manera local, simplemente ejecute el archivo `controlador.py` de la siguiente manera:
+Para hacerlo de manera local, simplemente se ejecuta alguno de los siguientes archivos:
 
 `python controlador.py`
 
