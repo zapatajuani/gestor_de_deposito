@@ -20,12 +20,19 @@ Antes de ejecutar la aplicación, es necesario instalar las dependencias requeri
 
 # Ejecución
 
-Una vez instaladas las dependencias, el programa puede ser ejecutado a través de dos archivos. Para hacerlo, simplemente ejecute uno de los siguientes comandos:
+Una vez instaladas las dependencias, el programa puede ser ejecutado a través de dos métodos.
+
+Para hacerlo de manera local, simplemente ejecute el archivo `controlador.py` de la siguiente manera:
 
 `python controlador.py`
 
 o
 
 `python __main__.py`
+
+Si se quiere ejecutar el programa de manera externa al fichero donde se descargaron los
+archivos, ejecute el siguiente código:
+
+`python <RUTA_DEL_FICHERO>`
 
 Por favor, consulte la [documentación](https://zapatajuani.github.io/gestor_de_deposito_docs/) completa para obtener más detalles sobre la ejecución y el uso de la aplicación 'Gestor de Depósito'.
