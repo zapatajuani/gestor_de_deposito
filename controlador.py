@@ -11,7 +11,8 @@ from openpyxl import Workbook
 from vista import App
 from modelo import Modelo
 
-database = "src\datos\main.db"
+abs_path = str(__file__)[:-(len(__name__)+3)]
+database = f"{abs_path}src\datos\main.db"
 tabla = "DEPOSITO"
 
 class Controlador():

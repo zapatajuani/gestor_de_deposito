@@ -35,12 +35,15 @@ class App(Tk):
         super().__init__()
         self.controlador = controlador
 
+        abs_path = str(__file__)[:-(len(__name__)+3)]
+        ico_path = f"{abs_path}src\img\icono.ico"
+
         self.style = ttk.Style(self)
         self.style.theme_use("clam")
         self.configure(background="#DCDAD5")
         self.resizable(False, False)
         self.title("Gestor de Deposito")
-        self.iconbitmap(r"src\img\icono.ico")
+        self.iconbitmap(ico_path)
 
         self.valor_item_id = StringVar()
         self.valor_nombre = StringVar()
